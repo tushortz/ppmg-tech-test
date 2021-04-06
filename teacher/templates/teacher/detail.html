@@ -1,6 +1,7 @@
 {% extends 'partials/base.html' %}
 {% load static %}
 
+
 {% block body %}
 <section class="hero d-flex align-items-end py-5 bg-cover bg-center"
   style="background: url({% static 'img/tool-detail-bg.jpg' %})">
@@ -37,6 +38,9 @@
               <div class="owl-carousel tool-gallery-slider" data-slider-id="1">
                 <a class="d-block" href="" data-lightbox="tool-gallery"
                   title="{{teacher}} image"><img class="img-fluid" src="{{teacher.image_url}}" alt="{{teacher}} image"></a>
+              </div>
+              <div class="owl-thumbs row px-2" data-slider-id="1">
+                <div class="owl-thumb-item col-3 px-2"><img class="w-100" src="{{teacher.image_url}}" alt="{{teacher}} image"></div>
               </div>
             </div>
           </div>
