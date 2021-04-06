@@ -7,8 +7,15 @@ class Teacher(models.Model):
     phone_no = models.CharField(max_length=50)
     room_no = models.CharField(max_length=10)
     
-    profile_pic = models.CharField(max_length=300)
+    profile_pic = models.CharField(max_length=50, null=True, blank=True)
     subjects_taught = models.ManyToManyField('teacher.Subject')
+
+    @property
+    def image_url(self):
+        if self.profile_pic:
+            return f"/assets/img/teachers/{self.profile_pic.strip()}"
+
+        return "/assets/img/no-photo-available.png"
 
     class Meta:
         ordering = ['first_name', 'last_name']

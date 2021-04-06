@@ -3,29 +3,10 @@
 
 {% block body %}
 <section class="py-5">
-  <div class="container pt-5">
-    <div class="row">
-      <div class="col-lg-7 mx-auto text-center">
-        <p class="h6 text-uppercase text-primary mb-3">Teacher Listings</p>
-        <h1 class="mb-5">A curated directory of our best teachers.</h1>
-        <form class="p-2 rounded shadow-sm bg-white" action="#">
-          <div class="input-group">
-            <input class="form-control border-0 mr-2" type="search" placeholder="Search tools and resources...">
-            <div class="input-group-append rounded">
-              <button class="btn btn-primary rounded" type="submit"><i class="fas fa-search"></i></button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="pb-5">
   <div class="container pb-5">
     <header class="text-center mb-5">
-      <h2 class="mb-1">Find teachers by subject</h2>
-      <p class="text-muted text-small">Here are curated list of our best teachers based on available subjects.</p>
+      <h2 class="mb-1">Directory of all available teachers</h2>
+      <p class="text-muted text-small">{{teachers.count}} teacher(s) found</p>
     </header>
     <div class="row text-center">
     {% if teachers %}
@@ -33,7 +14,7 @@
       <div class="col-lg-3 px-lg-2">
         <div class="categories-item card border-0 shadow mb-4 reset-anchor hover-transition">
           <div class="card-body px-4 py-5">
-            <img src="/assets/img/teachers/{{teacher.profile_pic}}" alt="">
+            <img src="{{teacher.image_url}}" alt="{{teacher}} image" class="img img-fluid">
             <h2 class="h5"> <a class="stretched-link reset-anchor-inherit" href="#">{{teacher}}</a></h2>
           </div>
         </div>
