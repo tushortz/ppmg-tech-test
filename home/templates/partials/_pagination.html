@@ -1,0 +1,32 @@
+{% load i18n %}
+{% if is_paginated %}
+<section id="pagination">
+  <div class="row">
+    <div class="col-sm-12 p-3">
+      <nav aria-label="Page navigation">
+        {% if is_paginated%}
+        {% if page_obj.has_other_pages %}
+        <ul class="pagination pagination-blog justify-content-center">
+            {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page=1"> {% trans "First"%} </a></li>
+                {% endif %}
+    
+            {% for i in page_obj.paginator.page_range %}
+                {% if page_obj.number == i %}
+                    <li class="page-item active"><a class="page-link">{{i}}</a></li>
+                {% elif i > page_obj.number|add:"-3" and i < page_obj.number|add:'3' %}
+                    <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                {% endif %}
+            {% endfor %}
+    
+            {% if page_obj.has_next %}
+              <li class="page-item"><a class="page-link" href="?page={{page_obj.paginator.num_pages}}">{% trans "Last"%}</a></li>
+            {% endif %}
+        </ul>
+        {% endif %}
+    {% endif %}        
+      </nav>
+    </div>
+  </div>
+</section>
+{% endif %}

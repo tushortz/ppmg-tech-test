@@ -25,9 +25,9 @@
                 class="dropdown-item" href="{% static 'category.html' %}">Category</a><a class="dropdown-item"
                 href="{% static 'detail.html' %}">Detail</a></div>
           </li>
-          {% if user.is_authenticated %}
+          {% if user.is_superuser %}
           <li class="nav-item ml-lg-2 py-2 py-lg-0"><a class="btn btn-primary" href="#listingModal"
-              data-toggle="modal">Add listing</a></li>
+              data-toggle="modal">Bulk upload</a></li>
               {% endif %}
         </ul>
       </div>

@@ -21,7 +21,6 @@
   </div>
 </section>
 
-{% if subjects %}
 <section class="pb-5">
   <div class="container pb-5">
     <header class="text-center mb-5">
@@ -29,11 +28,11 @@
       <p class="text-muted text-small">Here are curated list of our best teachers based on available subjects.</p>
     </header>
     <div class="row text-center">
-      {% for subject in subjects %}
+      {% for teacher in teachers %}
       <div class="col-lg-3 px-lg-2">
         <div class="categories-item card border-0 shadow mb-4 reset-anchor hover-transition">
           <div class="card-body px-4 py-5">
-            <h2 class="h5"> <a class="stretched-link reset-anchor-inherit" href="{% url 'teacher:list-by-subject' subject.name %}">{{subject.name|title}}</a></h2>
+            <h2 class="h5"> <a class="stretched-link reset-anchor-inherit" href="#">{{teacher}}</a></h2>
           </div>
         </div>
       </div>
@@ -41,5 +40,4 @@
     </div>
   </div>
 </section>
-{% endif %}
 {% endblock body %}
