@@ -13,7 +13,7 @@ class Teacher(models.Model):
     class Meta:
         ordering = ['first_name', 'last_name']
 
-    def str(self):
+    def __str__(self):
         return f"{self.last_name} {self.first_name}"
         
     def save(self, *args, **kwargs):

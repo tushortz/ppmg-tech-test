@@ -8,9 +8,9 @@
       <div class="col-lg-7 mx-auto text-center">
         <p class="h6 text-uppercase text-primary mb-3">Teacher Listings</p>
         <h1 class="mb-5">A curated directory of our best teachers.</h1>
-        <form class="p-2 rounded shadow-sm bg-white" action="#">
+        <form class="p-2 rounded shadow-sm bg-white" action="{% url 'teacher:index' %}">
           <div class="input-group">
-            <input class="form-control border-0 mr-2" type="search" placeholder="Search tools and resources...">
+            <input class="form-control border-0 mr-2" type="search" placeholder="Search by last name inital" name="q" maxlength="1">
             <div class="input-group-append rounded">
               <button class="btn btn-primary rounded" type="submit"><i class="fas fa-search"></i></button>
             </div>

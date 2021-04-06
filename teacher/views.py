@@ -10,6 +10,10 @@ class Index(LoginRequiredMixin, ListView):
     model = Teacher
     paginate_by = 25
 
+    def get_queryset(self):
+        query = self.request.GET.get("q", '').strip()
+        return self.model.objects.filter(last_name__istartswith=query)
+
 
 class TeacherDetail(LoginRequiredMixin, DetailView):
     template_name = "teacher/detail.html"
