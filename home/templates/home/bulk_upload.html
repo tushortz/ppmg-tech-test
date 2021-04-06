@@ -7,9 +7,10 @@
     <div class="row">
       <div class="col-lg-7 mx-auto text-center">
         <h1 class="py-5">Upload CSV file.</h1>
-        <form class="p-2 rounded shadow-sm bg-white" action="{% url 'home:bulk-upload' %}" method="POST">
+        <form class="p-2 rounded shadow-sm bg-white" action="{% url 'home:bulk-upload' %}" method="POST" enctype="multipart/form-data">
+          {% include 'partials/_form_errors.html' %}
           <div class="form-group">
-            <input class="form-control border-0 mr-2" type="file" placeholder="Upload csv" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+            <input class="form-control border-0 mr-2" type="file" name="file" placeholder="Upload csv" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
             <div class="rounded mt-3">
               <button class="btn btn-primary rounded" type="submit"><i class="fas fa-upload"></i>Upload</button>
             </div>
