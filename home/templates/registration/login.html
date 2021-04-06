@@ -1,0 +1,28 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block body %}
+<section class="py-5">
+  <div class="container py-5">
+    <header class="text-center mb-5">
+      <h1>Login</h1>
+      <p>Please enter your username and password</p>
+    </header>
+    <div class="row">
+      <div class="col-lg-6 mx-auto">
+        <form class="p-5 rounded shadow bg-white" method="POST">
+          {% include 'partials/_form_errors.html' %}
+
+          <div class="form-group">
+            <p><input class="form-control border-0 mr-2" type="text" placeholder="Enter your username" name="{{form.username.name}}"></p>
+            <p><input class="form-control border-0 mr-2" type="text" placeholder="Enter your password" name="{{form.password.name}}"></p>
+            <div class="input-group-append rounded">
+              <button class="btn btn-primary rounded" type="submit">Get started today</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock body %}

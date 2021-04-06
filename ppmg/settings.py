@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -104,11 +105,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-LOGOUT_REDIRECT_URL = 'home:index'
+LOGOUT_REDIRECT_URL = reverse_lazy('home:index')
 
-LOGIN_REDIRECT_URL = 'home:index'
+LOGIN_REDIRECT_URL = reverse_lazy('home:index')
 
-LOGIN_URL = "home:login"
+LOGIN_URL = reverse_lazy("home:login")
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -126,11 +127,16 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
+STATIC_ROOT = BASE_DIR / 'assets'
+
+STATICFILES_DIRS = [
+    BASE_DIR, 'ppmg/assets',
+]
 
 STATIC_URL = '/assets/'
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = BASE_DIR / 'ppmg/media'
 
 SITE_ID = 1

@@ -8,7 +8,17 @@ class Teacher(models.Model):
     room_no = models.CharField(max_length=10)
     
     profile_pic = models.TextField(max_length=300)
-    subjects_taught = models.CharField(max_length=300)
+    subjects_taught = models.ManyToManyField('teacher.Subject')
 
     class Meta:
         ordering = ['first_name', 'last_name']
+
+
+class Subject(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['name']
