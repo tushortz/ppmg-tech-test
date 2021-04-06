@@ -2,41 +2,59 @@
 {% load static %}
 
 {% block body %}
-<section class="py-5">
-  <div class="container pt-5">
-    <div class="row">
-      <div class="col-lg-7 mx-auto text-center">
-        <p class="h6 text-uppercase text-primary mb-3">Teacher Listings</p>
-        <h1 class="mb-5">A curated directory of our best teachers.</h1>
-        <form class="p-2 rounded shadow-sm bg-white" action="#">
-          <div class="input-group">
-            <input class="form-control border-0 mr-2" type="search" placeholder="Search tools and resources...">
-            <div class="input-group-append rounded">
-              <button class="btn btn-primary rounded" type="submit"><i class="fas fa-search"></i></button>
-            </div>
+<section class="hero d-flex align-items-end py-5 bg-cover bg-center"
+  style="background: url({% static 'img/tool-detail-bg.jpg' %})">
+  <div class="container index-forward py-5 py-lg-0">
+    <div class="row align-items-end">
+      <div class="col-lg-7 mb-4 mb-lg-0">
+        <div class="media align-items-center"><img class="rounded-circle" src="{{teacher.image_url}}"
+            alt="{{teacher}} image" width="80">
+          <div class="media-body ml-3">
+            <h1 class="text-white">{{teacher}}</h1>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="pb-5">
-  <div class="container pb-5">
-    <header class="text-center mb-5">
-      <h2 class="mb-1">Find teachers by subject</h2>
-      <p class="text-muted text-small">Here are curated list of our best teachers based on available subjects.</p>
-    </header>
-    <div class="row text-center">
-      {% for teacher in teachers %}
-      <div class="col-lg-3 px-lg-2">
-        <div class="categories-item card border-0 shadow mb-4 reset-anchor hover-transition">
-          <div class="card-body px-4 py-5">
-            <h2 class="h5"> <a class="stretched-link reset-anchor-inherit" href="#">{{teacher}}</a></h2>
+<section class="py-5">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-8 mb-5 mb-lg-0">
+        <!-- About-->
+        <div class="card border-0 shadow-sm mb-4 mb-lg-5 p-2 p-lg-0">
+          <div class="card-body p-lg-5">
+            <h2 class="h3 mb-4">About {{teacher}}</h2>
+            <p>You can reach {{teacher.first_name}} via the email: <a href="mailto:{{teacher.email}}">{{teacher.email}}</a>. Sometimes it may be faster to dial <a href="tel:{{teacher.phone_no}}">{{teacher.phone_no}}</a>. If these two options fail, you can knock on their door at room {{teacher.room_no}}.</p>
+          </div>
+        </div>
+        <!-- Gallery-->
+        <div class="card border-0 shadow-sm mb-4 mb-lg-5 p-2 p-lg-0">
+          <div class="card-body p-lg-5">
+            <h2 class="h3 mb-4">Gallery</h2>
+            <div class="rounded overflow-hidden mb-3">
+              <div class="owl-carousel tool-gallery-slider" data-slider-id="1">
+                <a class="d-block" href="" data-lightbox="tool-gallery"
+                  title="{{teacher}} image"><img class="img-fluid" src="{{teacher.image_url}}" alt="{{teacher}} image"></a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      {% endfor %}
+      <div class="col-lg-4">
+        <!-- Categories widget-->
+        <div class="card border-0 shadow-sm mb-4 mb-lg-5 p-2 p-lg-0">
+          <div class="card-body p-lg-5">
+            <h2 class="h3 mb-4">Subjects taught</h2>
+            <ul class="list-inline mb-0">
+              {% for subject in teacher.subjects_taught.all %}
+              <li class="list-inline-item m-1"><a class="btn btn-light" href="{% url 'teacher:list-by-subject' subject.name %}">{{subject.name}}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

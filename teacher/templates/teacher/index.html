@@ -15,7 +15,7 @@
         <div class="categories-item card border-0 shadow mb-4 reset-anchor hover-transition">
           <div class="card-body px-4 py-5">
             <img src="{{teacher.image_url}}" alt="{{teacher}} image" class="img img-fluid">
-            <h2 class="h5"> <a class="stretched-link reset-anchor-inherit" href="#">{{teacher}}</a></h2>
+            <h2 class="h5"> <a class="stretched-link reset-anchor-inherit" href="{% url 'teacher:detail' teacher.id %}">{{teacher}}</a></h2>
           </div>
         </div>
       </div>

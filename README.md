@@ -21,6 +21,12 @@ $ source env/bin/activate # other os platforms
 
 > **Note**: creating the virtual environment step above is optional.
 
+## Install requirements
+
+```sh
+$ pip install -r requirements.txt
+```
+
 ## Running the application
 
 ```sh
